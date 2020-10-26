@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>    
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body{
+           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+           color:rgb(49, 49, 49);
+           background: rgb(238,174,202);
+           background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+           height: 100%;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .column h2 {
+            text-align: center;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        textarea {
+            width: 100%;
+        }
+    </style>
+    <script>
+        // searches for e.g. [18:17, 10/13/2020] Andreas Huber:
+        const regexWhatsappDateAndName = /(\[[\d:,\s/]+\].+:\s*)/gm;
+
+        function removeNames(text){
+            var textareaConverted = document.getElementById("text-converted");
+            textareaConverted.value = text.replace(regexWhatsappDateAndName, "");
+        };
+    </script>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="column">
+            <h2>Paste Original Conversation</h2>
+            <textarea id="text-source" rows="38" cols="50" oninput="removeNames(this.value)"></textarea>
+        </div>
+        <div class="column">
+            <h2>Converted Conversation</h2>
+            <textarea id="text-converted" rows="38" cols="50"></textarea>
+        </div>
+    </div>
+
+</body>
+
+</html>
