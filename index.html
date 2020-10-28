@@ -42,8 +42,10 @@
         }
     </style>
     <script>
-        // searches for e.g. [18:17, 10/13/2020] Andreas Huber:
-        const regexWhatsappDateAndName = /(\[[\d:,\s/]+\].+:\s*)/gm;
+        // searches for e.g.
+        // [18:17, 10/13/2020] Andreas Huber:
+        // [11:34, 26.10.2020] Mr. Germany:
+        const regexWhatsappDateAndName = /(\[\d+:\d+,\s(\d+[\.|\/]){2}\d+]).+:\s?/gm;
 
         function removeNames(text){
             var textareaConverted = document.getElementById("text-converted");
